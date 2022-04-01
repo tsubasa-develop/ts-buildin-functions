@@ -27,6 +27,7 @@ interface Shop {
 
   参考文献
   https://log.pocka.io/ja/posts/typescript-builtin-type-functions/
+  https://www.forcia.com/blog/002377.html
 
 // ------------------------------------------------------------------------------------*/
 
@@ -97,7 +98,7 @@ type ShopReadonly = Readonly<Shop>;
 /*
  * Pick
  * since v2.1~
- * 定義: 型TからKに当てはまるプロパティのみを抜き取った新しい型を定義
+ * 定義: 型TからKに当てはまるプロパティのみを抜き取った新しい型を定義。プロパティ名で制御
  * 用途: 100%同一の型である必要がない機能の実装に役立ちそう。
  * メモ: ↔︎ Omit
  */
@@ -116,7 +117,7 @@ type ShopPick = Pick<Shop, "name" | "color">;
 /*
  * Omit
  * since v3.5~
- * 定義: 型TからKに当てはまるプロパティを除外した新しい型を定義
+ * 定義: 型TからKに当てはまるプロパティを除外した新しい型を定義。プロパティ名で制御
  * 用途:
  * メモ: ↔︎ Pick
  */
@@ -160,7 +161,7 @@ type ShopRecord = Record<keyof Shop, number>;
 /*
  * Exclude
  * since v2.8~
- * 定義: 型Tが型Uに代入可能であればneverそうでなければ型Tを返す
+ * 定義: 型Tが型Uに代入可能であればneverそうでなければ型Tを返す。型で制御
  * 用途: ユニオン型の除外操作に使える
  * メモ: ↔︎ Extract
  */
@@ -186,7 +187,7 @@ type ConvenienceStore = "ローソン" | "ファミリーマート" | "セブン
 /*
  * Extract
  * since v2.8~
- * 定義: 型Tが型Uに代入可能であれば型Tそうでなければneverを返す
+ * 定義: 型Tが型Uに代入可能であれば型Tそうでなければneverを返す。型で制御
  * 用途: ユニオン型のピックアップ操作に使える
  * メモ: ↔︎ Exclude
  */
